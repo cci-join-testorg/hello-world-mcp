@@ -1,0 +1,23 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: cimg/node:18.20
+    steps:
+      - checkout
+      - run:
+          name: Install pnpm
+          command: npm install -g pnpm
+      - run:
+          name: Install dependencies
+          command: pnpm install
+      - run:
+          name: Run tests
+          command: pnpm test
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test 
