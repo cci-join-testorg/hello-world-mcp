@@ -1,0 +1,44 @@
+name: "Fitness Exercise Recommender"
+description: "A prompt template that provides the top 3 most effective exercises for any given body part, including exercise names, proper form descriptions, and effectiveness explanations."
+version: "1.0.0"
+promptOrigin: "requirements"
+model: "gpt-4.1-mini"
+temperature: 0.7
+template: |
+  The user wants to focus on the {{bodyPart}}. Please provide the top 3 most effective exercises for this body part. For each exercise, include:
+  1. The exercise name
+  2. A brief description of the proper form
+  3. An explanation of why this exercise is particularly effective for targeting the {{bodyPart}} muscle group.
+
+  Format your response clearly and concisely to help the user understand how to perform each exercise correctly and its benefits.
+contextSchema:
+  bodyPart: "string"
+tests:
+  - name: "Exercise Count Validation"
+    description: "The output must list exactly 3 exercises targeting the specified {{bodyPart}}."
+  - name: "Exercise Description Completeness"
+    description: "Each exercise description must include the exercise name, a brief but clear explanation of the proper form, and why it effectively targets the {{bodyPart}} muscle group."
+  - name: "Response Formatting"
+    description: "The response must be formatted clearly and concisely, using bullet points or numbering to separate each exercise and its components for readability."
+  - name: "Tone Appropriateness"
+    description: "The tone of the output should be informative and encouraging, suitable for a user seeking fitness advice."
+  - name: "Language Quality"
+    description: "The grammar, spelling, and punctuation throughout the output must be correct and professional."
+  - name: "Description Length Balance"
+    description: "The length of each exercise description should be balanced: detailed enough to understand the form and benefits but concise enough to maintain user engagement."
+  - name: "Style Consistency"
+    description: "The style should be consistent across all exercises, using similar sentence structures and terminology for clarity."
+  - name: "Exercise Accuracy"
+    description: "The explanation for why each exercise targets the {{bodyPart}} must be accurate and reflect common fitness knowledge."
+  - name: "Clarity and Accessibility"
+    description: "The output must avoid ambiguous or overly technical terms to ensure clarity for users of varying fitness knowledge levels."
+  - name: "Content Relevance"
+    description: "The response should not include exercises unrelated to the specified {{bodyPart}} to maintain completeness and focus."
+sampleInputs:
+  - bodyPart: "chest"
+  - bodyPart: "legs"
+  - bodyPart: "back"
+  - bodyPart: "shoulders"
+  - bodyPart: "arms"
+  - bodyPart: "core"
+  - bodyPart: "glutes"
